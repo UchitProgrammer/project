@@ -1,0 +1,58 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>VictoryPro | My Result </title>
+
+</head>
+<body>
+<div class="main">
+  
+  <div class="content" >
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h3 style="font-size: 25px; color: white;">My Result</h3>
+          <div class="clr"></div>
+        </div>
+        <table width="100%" border="5" cellpadding="10px" cellspacing="10px" style="color: white;  font-size: 15px;">
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email_Id</th>
+                <th>Course</th>
+                <th>Total Marks</th>
+                <th>Marks</th>
+                <th>Exame Date</th>
+              </tr> 
+              <tbody id="dispData">
+              {% for i in result %}
+                <tr>
+                  <td>{{i.student.fname}}</td>
+                  <td>{{i.student.lname}}</td>
+                  <td>{{i.student.email}}</td>
+                  <td>{{i.course.cname}}</td>
+                  <td>4</td>
+                  <td>{{i.marks}}</td>
+                  <td>{{i.date}}</td>
+                </tr>
+              {% endfor %}
+              </tbody>   
+            </table>
+        <div class="article">          
+          <div class="clr"></div>
+                  
+        </div>
+      </div>
+      
+      <div class="clr"></div>
+    </div>
+  </div>
+  
+ 
+</div>
+</body>
+</html>
+{% endblock %}

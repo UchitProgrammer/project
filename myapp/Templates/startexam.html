@@ -1,0 +1,72 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>VictoryPro | Start Exam </title>
+  <script>
+    var count = 20;
+    var interval = setInterval(function(){
+    document.getElementById('count').innerHTML=count;
+    count--;
+    if (count === 0){
+      clearInterval(interval);
+      document.getElementById('count').innerHTML='Done';
+      // or...
+      alert("You're out of time!"); 
+      document.startexam.submit();
+    }
+  }, 1000);
+  </script>
+</head>
+<body>
+<div class="main">
+  
+  <div class="content" >
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h3 style="font-size: 25px; color: white;">Start Exam </h3>
+          <div class="clr"></div>
+        </div>
+        <h3 style="color: white; font-size: 17px;">Time :  <span id="count" style="color: white; font-size: 17px;"></span></h3>              
+        <form name="startexam" id="count" method="post" action="{% url 'examcheck' %}"  onload="document.startexam.submit()">
+          {% csrf_token %}          
+          <ol>
+            {% for i in questions %}
+            <li style="font-size: 18px; color: white;">{{i.question}}</li>
+            
+            <h3 style="15px; color: white;">
+              <input type="radio" value="op1" name="{{i.id}}">{{i.op1}}
+            </h3>
+            <h3 style="15px; color: white;">
+              <input type="radio" value="op2" name="{{i.id}}">{{i.op2}}
+            </h3>
+            <h3 style="15px; color: white;">
+              <input type="radio" value="op3" name="{{i.id}}">{{i.op3}}
+            </h3>
+            <h3 style="15px; color: white;">
+              <input type="radio" value="op4" name="{{i.id}}">{{i.op4}}
+            </h3>            
+            {% endfor %}
+          </ol>
+          <br><br> 
+          <input type="submit" value="Submit Exam" style="background:  rgb(50, 210, 0); color: white; border-radius: 10px; font-size: 15px; padding: 0px 25px;">
+          <!-- <button type="submit"  style="background:  rgb(50, 210, 0); color: white; border-radius: 10px; font-size: 15px; padding: 0px 25px;"> Submit Exam </button> -->         
+        </form>
+        <div class="article">          
+          <div class="clr"></div>
+                  
+        </div>
+      </div>
+      
+      <div class="clr"></div>
+    </div>
+  </div>
+  
+ 
+</div>
+</body>
+</html>
+{% endblock %}
