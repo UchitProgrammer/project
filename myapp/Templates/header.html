@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>VictoryPro</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/coin-slider.css' %}" />
+<script type="text/javascript" src="{% static 'js/cufon-yui.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/cufon-georgia.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery-1.4.2.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/coin-slider.min.js' %}"></script>
+</head>
+<body>
+<div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="menu_nav">
+        <ul>
+          {% url 'home' as url %}
+          <li class="nav-item {% if request.path == url %}active{% endif %}">
+            <a class="nav-link" href="{{ url }}">Home</a>
+          </li>
+          {% url 'aboutus' as url %}
+          <li class="nav-item {% if request.path == url %}active{% endif %}">
+            <a class="nav-link" href="{{ url }}">About Us</a>
+          </li>
+          {% url 'contact' as url %}
+          <li class="nav-item {% if request.path == url %}active{% endif %}">
+            <a class="nav-link" href="{{ url }}">Contact</a>
+          </li>
+          <!-- <li class="active"><a href="/"><span>Home Page</span></a></li>
+          <li><a href="{% url 'aboutus' %}"><span>About Us</span></a></li>
+           -->
+          <!-- <li><a href="{% url 'contact' %}"><span>Contact</span></a></li> -->
+          {% if request.session.email %}
+          {% url 'exam' as url %}
+          <li class="nav-item {% if request.path == url %}active{% endif %}">
+            <a class="nav-link" href="{{ url }}">Exam</a>
+          </li> 
+          <!-- <li><a href="{% url 'exam' %}"><span>Exam</span></a></li> -->
+          {% url 'myresult' as url %}
+          <li class="nav-item {% if request.path == url %}active{% endif %}">
+            <a class="nav-link" href="{{ url }}">My Result</a>
+          </li>
+          <!-- <li><a href="{% url 'myresult' %}"><span>MY Result</span></a></li> -->
+          {% url 'changepassword' as url %}
+          <li class="nav-item {% if request.path == url %}active{% endif %}">
+            <a class="nav-link" href="{{ url }}">Change Password</a>
+          </li>         
+          <!-- <li><a href="{% url 'changepassword' %}"><span>Change Password</span></a></li> -->
+          {% url 'logout' as url %}
+          <li class="nav-item {% if request.path == url %}active{% endif %}">
+            <a class="nav-link" href="{{ url }}">Logout</a>
+          </li>
+          <!-- <li><a href="{% url 'logout' %}"><span>Logout</span></a></li> -->
+          <li><img src="{{ request.session.profilepicture }}" height="50px" width="50px"></li>
+          {% else %}
+          {% url 'signup' as url %}
+          <li class="nav-item {% if request.path == url %}active{% endif %}">
+            <a class="nav-link" href="{{ url }}">Sign Up</a>
+          </li>
+          <!-- <li><a href="{% url 'signup' %}"><span>Sign Up</span></a></li> -->
+          {% url 'login' as url %}
+          <li class="nav-item {% if request.path == url %}active{% endif %}">
+            <a class="nav-link" href="{{ url }}">Login</a>
+          </li>
+          <!-- <li><a href="{% url 'login' %}"><span>Login</span></a></li> -->
+          {% endif %}          
+        </ul>
+      </div>
+      <div class="logo">
+        <h1><a href="/">Victory<span>Pro</span></a></h1>
+      </div>
+      <div class="clr"></div>
+      <div class="slider">
+        <div id="coin-slider"> <a href="#"><img src="{% static 'images/slide1.jpg' %}" width="960" height="360" alt="" /></a> <a href="#"><img src="{% static 'images/slide2.jpg' %}" width="960" height="360" alt="" /></a> <a href="#"><img src="{% static 'images/slide3.jpg' %}" width="960" height="360" alt="" />
+        </a> </div>
+        <div class="clr"></div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>      
+{% block content %}
+{% endblock %}
+  <div class="fbg">
+    <div class="fbg_resize">
+      <div class="col c1">
+        <h2><span>Image</span> Gallery</h2>
+        <img src="{% static 'images/gal1.jpg' %}" width="75" height="75" alt="" class="gal" /> <img src="{% static 'images/gal2.jpg' %}" width="75" height="75" alt="" class="gal" /><img src="{% static 'images/gal3.jpg' %}" width="75" height="75" alt="" class="gal" /><img src="{% static 'images/gal4.jpg' %}" width="75" height="75" alt="" class="gal" /><img src="{% static 'images/gal5.jpg' %}" width="75" height="75" alt="" class="gal" /><img src="{% static 'images/gal6.jpg' %}" width="75" height="75" alt="" class="gal" /> </div>
+      <div class="col c2">
+        <h2><span>Services</span> Overview</h2>
+        <p>Curabitur sed urna id nunc pulvinar semper. Nunc sit amet tortor sit amet lacus sagittis posuere cursus vitae nunc.Etiam venenatis, turpis at eleifend porta, nisl nulla bibendum justo.</p>
+        <ul class="fbg_ul">
+          <li>Lorem ipsum dolor labore et dolore.</li>
+          <li>Excepteur officia deserunt.</li>
+          <li>Integer tellus ipsum tempor sed.</li>
+        </ul>
+      </div>
+      <div class="col c3">
+        <h2><span>Contact</span> Us</h2>
+        <p>Nullam quam lorem, tristique non vestibulum nec, consectetur in risus. Aliquam a quam vel leo gravida gravida eu porttitor dui.</p>
+        <!-- <p class="contact_info"> <span>Address:</span> 1458 TemplateAccess, USA<br />
+          <span>Telephone:</span> +123-1234-5678<br />
+          <span>FAX:</span> +458-4578<br />
+          <span>Others:</span> +301 - 0125 - 01258<br /> -->
+          <span>E-mail:</span> <a href="{% url 'contact' %}">mail@yoursitename.com</a> </p>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer_resize">
+      <p class="lf"><a href="#"></a> All Rights Reserved</p>
+      <p class="rf">Design by <strong style="color: lightblue;"> Uchit Patel</strong></p>
+      <div style="clear:both;"></div>
+    </div>
+  </div>  
+</div>
+</body>
+</html>
